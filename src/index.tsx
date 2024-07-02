@@ -4,7 +4,7 @@ import { Home } from "./pages/Home/index.jsx";
 import { NotFound } from "./pages/_404.jsx";
 import "./style.css";
 
-export function App() {
+export const App = () => {
   return (
     <LocationProvider>
       <main>
@@ -15,7 +15,7 @@ export function App() {
       </main>
     </LocationProvider>
   );
-}
+};
 
 if (typeof window !== "undefined") {
   hydrate(<App />, document.getElementById("app"));

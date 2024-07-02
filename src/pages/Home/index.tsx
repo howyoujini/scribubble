@@ -1,21 +1,14 @@
-import * as THREE from "three";
-import "./style.css";
-import { ToolBar } from "../../components/ToolBar";
+import { ToolBar } from "../../components/ToolBar/tool_bar";
+import ChatScroll from "../Chat";
 
-export function Home() {
+import io from "socket.io-client";
+const socket = io("http://localhost:3000");
+
+export const Home = () => {
   return (
-    <div class="home">
-      <ToolBar />
-    </div>
+    <>
+      <ChatScroll socket={socket} />
+      <ToolBar color="#141414" />
+    </>
   );
-}
-
-const TOOL_STATE = {
-  EXPLORING: "EXPLORING",
-  SELECTING: "SELECTING",
-  DRAWING: "DRAWING",
-  ERASING: "ERASING",
-  SHAPE: "SHAPE",
-} as const;
-
-type TOOL_STATE = (typeof TOOL_STATE)[keyof typeof TOOL_STATE];
+};
